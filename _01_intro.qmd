@@ -1,3 +1,15 @@
 # Introduction
 
-Something something, and then I state some citable facts [@Zelner2022].
+The field of public health and statistics are fundamentally intertwined. This is especially so when looking at Social Determinants of Health (SDOH) which have problems that require more complex analytical models to analyze and inform. Data science being a cross disciplinary skill of statistics and computer science is perfect for addressing these issues.[] This project intends to leverage advanced machine learning models within the discipline of data science as well as the traditional data gathered for SDOH to gain insight into the potential causes of preventable hospitalizations within the counties of California. 
+
+	The key steps involved were: 
+
+Data Collection: Gathering accurate and real SDOH data provided by government agencies such as calHHS, California Open Data Portal, and the US census. Data were then joined into one large use-able dataframe. 
+
+Multiple Linear Regression: A unique model was created for every county using all available predictors. 
+
+K-means Clustering: R-squared values obtained for each county from the multiple linear regression models were then used as feature vectors in K-means clustering. 
+
+Principal Component Analysis: PCA was used to reduce dimensionality of the data into something that was able to be visualized.
+
+Stepwise Regression: Bidirectional stepwise selection used to select the final linear regression models, which automatically identified and included only the statistically significant predictors relevant to that county’s data.
