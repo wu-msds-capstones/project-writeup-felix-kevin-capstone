@@ -8,7 +8,7 @@ format:
   html:
     theme: cerulean
     toc: true
-    number-sections: false
+    number-sections: false 
     title-block-banner: true
 bibliography: references.bib
 csl: vancouver.csl
