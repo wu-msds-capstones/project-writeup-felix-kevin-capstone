@@ -14,3 +14,12 @@ format:
 ---
 
 ```{include: _01_intro.qmd}
+
+---
+
+### ✅ Step 2: Render your site locally
+
+Run this in the **terminal** inside your project folder:
+
+```bash
+quarto render capstone.qmd --output-dir _site
