@@ -55,6 +55,11 @@ Preliminary exploratory data analysis revealed a downward trend in preventable h
 |:--:|:--:|
 | **Figure 1.** Downward trend in Preventable Hospitalizations Across All Counties | **Figure 2.** Downward Trend in Preventable Hospitalizations Across All Regions |
 
+
+## Entity Relationship Diagram
+
+The Entity Relationship Diagram (ERD) shows three initial datasets for preventable hospitalizations, census data, and Industry sectors, all being joined by county-year as a unique key. Results from that data were exported to a Jupyter notebook to perform cluster analysis. Results from the cluster analysis were merged back into the final dataframe using county as the key for a one-to-many relationship since the clustering is for the entire duration and not specific to any single year. The final dataframe cannot be considered completely normalized due to the repeating values used from the census data.
+
 ## Ethical Considerations
 
 Public health and census data often encapsulate long-standing structural inequalities, including those stemming from historical patterns of segregation, disparities in educational and occupational opportunities, and inequitable access to healthcare services across racial and socioeconomic strata. There have also been ethical concerns about the use of census data for healthcare research. While census data may be anonymized, the nature of the data involves categorizing individuals into blanket categories such as lumping all Asian ethnicities together or the “some other race” option. There is also inherent bias within the census process such as non-respondent bias.[] These inherent-bias were acknowledged and taken into consideration when performing analysis. Due to the nature of these data, all data are treated as representation of people rather than just numbers and appropriate language was used. To mitigate bias for race and ethnicity, data was used to create a diversity index per county rather than looking at the spread of individual ethnicities. 
@@ -192,7 +197,10 @@ The clustering analysis reveals a clear separation between poorly and strongly p
 
 Analysis of the clustering results highlights the importance of population density on model viability. Counties with larger populations, particularly those located along the California coastline, are more frequently found in Cluster 1 and tend to benefit from models that rely on educational level and employment indicators. On the other hand, counties in the Central Valley and Northern California, which are more rural and agriculturally oriented, tend to have lower population densities and are more often associated with weaker models. These findings suggest that while several social determinants influence preventable hospitalizations, High School Graduation and Unemployment are the most consistent and powerful predictors across the state. Employment in the agricultural sector also appears to be a significant factor, particularly in less densely populated regions.
 
-# Future Steps
+# Further Considerations
+
+The preventable Hospitalizations data can be updated in the future to incorporate current data. There were several limitations in the data we obtained, including missing values and unmet regression assumptions. The original intent was to focus on rent prices by county as another method of correlating preventable hospitalizations with socioeconomic factors. Several sectors of the industry were removed from the final modeling due to similar issues with collinearity and heteroskedasticity. The methodology of inserting a set of R-squared values as a feature vector in k-means clustering is questionable due to it being a constrained metric. The census data is collected every five years, which lead us to interpolating missing values through repetition. This led to worse outcomes in our modelling. The analysis could be improved by the acquisition of more robust and high-quality data sets. 
+
 
 
 
