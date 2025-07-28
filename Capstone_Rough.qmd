@@ -14,7 +14,7 @@ format:
 
 # Introduction
 
-The field of public health and statistics are fundamentally intertwined. This is especially so when looking at Social Determinants of Health (SDOH) which have problems that require more complex analytical models to analyze and inform. Data science being a cross disciplinary skill of statistics and computer science is perfect for addressing these issues.[] This project intends to leverage advanced machine learning models within the discipline of data science as well as the traditional data gathered for SDOH to gain insight into the potential causes of preventable hospitalizations within the counties of California. 
+The field of public health and statistics are fundamentally intertwined. This is especially so when looking at Social Determinants of Health (SDOH) which have problems that require more complex analytical models to analyze and inform. Data science being a cross disciplinary skill of statistics and computer science is perfect for addressing these issues.[] This project intends to leverage advanced machine learning models within the discipline of data science as well as the traditional data gathered for SDOH to gain insight into the potential causes of preventable hospitalizations within the counties of California.
 
 	The key steps involved were: 
 
