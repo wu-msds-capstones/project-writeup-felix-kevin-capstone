@@ -1,9 +1,9 @@
 ---
-title: "Capstone Project"
-subtitle: Subtitle
+title: "Predictive Models for Preventable Hospitalizations in California Counties"
+subtitle: A data-driven apporoach to understanding Preventable Hospitalizations in California
 authors:
-  - Bob
-  - Jane
+  - Felix Huang
+  - Kevin Kiser
 bibliography: references.bib
 title-block-banner: true
 format: 
@@ -13,10 +13,4 @@ format:
       dark: darkly
 ---
 
-{{< include _01_intro.qmd >}}
-{{< include _02_background.qmd >}}
-{{< include _03_data.qmd >}}
-{{< include _04_analysis.qmd >}}
-{{< include _05_results.qmd >}}
-{{< include _06_conclusions.qmd >}}
-{{< include _07_references.qmd >}}
+```{include: _01_intro.qmd}
