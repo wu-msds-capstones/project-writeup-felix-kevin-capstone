@@ -22,3 +22,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
+          user_name: Felix Huang
+          user_email: felix@users.noreply.github.com
