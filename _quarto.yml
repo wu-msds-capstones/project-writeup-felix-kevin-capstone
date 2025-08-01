@@ -1,11 +1,12 @@
+
 project:
   type: manuscript
-  output-dir: _output
+
   resources:
     - "_*.qmd"
 
 manuscript:
-  article: Capstone_Rough.qmd 
+  article: Capstone_Rough.qmd
 
 format: 
   html:
