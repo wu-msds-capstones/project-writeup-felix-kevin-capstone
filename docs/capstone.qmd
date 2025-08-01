@@ -1,0 +1,16 @@
+---
+title: "Predictive Models for Preventable Hospitalizations in California Counties"
+subtitle: A data-driven apporoach to understanding Preventable Hospitalizations in California
+authors:
+  - Felix Huang
+  - Kevin Kiser
+bibliography: references.bib
+title-block-banner: true
+format: 
+  html:
+    theme:
+      light: lightly
+      dark: darkly
+---
+
+```{include: _01_intro.qmd}
