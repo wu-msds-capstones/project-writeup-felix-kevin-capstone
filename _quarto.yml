@@ -5,7 +5,7 @@ project:
     - "_*.qmd"
 
 manuscript:
-  article: capstone.qmd
+  article: Capstone_Rough.qmd 
 
 format: 
   html:
