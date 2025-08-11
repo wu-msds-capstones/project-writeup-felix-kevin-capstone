@@ -33,7 +33,6 @@ California healthcare spending is estimated at around $400 billion annually, wit
 Four social determinants of health were chosen for analysis across 58 counties in California: Education, Unemployment, Type of Employment, and Racial demographics. Education, Race, and Unemployment were selected due to extensive research showing that they have direct impacts on health. [@annurev_sdh;@hahn_education;@lundqvist2016public] Three types of Employment were included: Manufacturing, Transportation, and Agriculture. These three types of employment had the most usable data across all counties, and we deemed that they were not collinear. 
 
 
-
 # Methods
 
 ## Data Collection
