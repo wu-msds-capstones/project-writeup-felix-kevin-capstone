@@ -1,18 +1,15 @@
 
 project:
   type: manuscript
-
-  resources:
-    - "_*.qmd"
+  output-dir: docs
 
 manuscript:
   article: Capstone_Rough.qmd
 
-format: 
+format:
   html:
-    theme:
-      light: lightly
-      dark: darkly
-      
-      
-      
+    theme: cerulean
+    toc: true
+    toc-location: left
+    number-sections: false
+    title-block-banner: true

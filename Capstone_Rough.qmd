@@ -4,12 +4,6 @@ subtitle: "A Data-Driven Approach to Understanding the Causes of Preventable Hos
 author:
   - Felix Huang
   - Kevin Kiser
-format:
-  html:
-    theme: cerulean
-    toc: true
-    number-sections: false 
-    title-block-banner: true
 bibliography: references.bib
 csl: vancouver.csl
 ---
