@@ -1,11 +1,5 @@
 project:
-  type: default
+  type: manuscript
 
-format:
-  html:
-    theme: cerulean
-    toc: true
-    toc-location: left
-    number-sections: false
-    title-block-banner: true
-    
+manuscript:
+  article: Capstone_Rough.qmd
