@@ -1,4 +1,4 @@
-name: Quarto Publish
+name: Render and Deploy Quarto Project
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -29,7 +29,14 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Render and Publish
-        uses: quarto-dev/quarto-actions/publish@v2
+      - name: Render Project
+        run: quarto render
+
+      - name: Rename Rendered File to index.html
+        run: mv ./_manuscript/Capstone_Rough.html ./_manuscript/index.html
+      
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          target: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_manuscript
