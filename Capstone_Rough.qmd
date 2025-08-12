@@ -201,7 +201,6 @@ Unemployment and Education often have a strong correlation as SDOH; however, our
 
 The preventable Hospitalizations data can be updated in the future to incorporate current data. Several limitations in the data we obtained limited the final predictor variables that were used, including missing values and unmet regression assumptions. The original intent was to focus on rent prices by county as another method of correlating preventable hospitalizations with socioeconomic factors. Several sectors of the industry were removed from the final modeling due to similar issues with collinearity and heteroskedasticity. The methodology of inserting a set of R-squared values as a feature vector in k-means clustering is questionable because it is a constrained metric. The census data is collected every five years, which leads us to interpolate missing values through repetition. This led to worse outcomes in our modelling. The analysis could be improved by the acquisition of more robust and high-quality data sets. Many of the inferences made regarding the structure and meaning of the clustering groups are subjective and open to further interpretation. 
 
-
 # References
 
 
