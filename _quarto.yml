@@ -1,9 +1,6 @@
 project:
-  type: manuscript
+  type: default
   output-dir: docs
-
-manuscript:
-  article: Capstone_Rough.qmd
 
 format:
   html:

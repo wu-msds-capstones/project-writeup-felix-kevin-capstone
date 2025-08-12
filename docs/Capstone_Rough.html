@@ -22,19 +22,38 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
-<script src="_03_methods_files/libs/clipboard/clipboard.min.js"></script>
-<script src="_03_methods_files/libs/quarto-html/quarto.js"></script>
-<script src="_03_methods_files/libs/quarto-html/popper.min.js"></script>
-<script src="_03_methods_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="_03_methods_files/libs/quarto-html/anchor.min.js"></script>
-<link href="_03_methods_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="_03_methods_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="_03_methods_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="_03_methods_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="_03_methods_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="Capstone_Rough_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Capstone_Rough_files/libs/quarto-html/quarto.js"></script>
+<script src="Capstone_Rough_files/libs/quarto-html/popper.min.js"></script>
+<script src="Capstone_Rough_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Capstone_Rough_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Capstone_Rough_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Capstone_Rough_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Capstone_Rough_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Capstone_Rough_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Capstone_Rough_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -70,7 +89,7 @@ window.Quarto = {
 
 <body>
 
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Predictive Models for Preventable Hospitalizations In California Counties</h1>
@@ -94,8 +113,8 @@ window.Quarto = {
     </div>
     
   
-  </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
   <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
@@ -106,6 +125,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#data-collection" id="toc-data-collection" class="nav-link" data-scroll-target="#data-collection">Data Collection</a></li>
   <li><a href="#data-ingestion" id="toc-data-ingestion" class="nav-link" data-scroll-target="#data-ingestion">Data Ingestion</a></li>
+  <li><a href="#entity-relationship-diagram" id="toc-entity-relationship-diagram" class="nav-link" data-scroll-target="#entity-relationship-diagram">Entity Relationship Diagram</a></li>
   <li><a href="#ethical-considerations" id="toc-ethical-considerations" class="nav-link" data-scroll-target="#ethical-considerations">Ethical Considerations</a></li>
   <li><a href="#modeling" id="toc-modeling" class="nav-link" data-scroll-target="#modeling">Modeling</a></li>
   </ul></li>
@@ -116,9 +136,12 @@ window.Quarto = {
   </ul></li>
   <li><a href="#stepwise-regression" id="toc-stepwise-regression" class="nav-link" data-scroll-target="#stepwise-regression">Stepwise Regression</a></li>
   <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
-  <li><a href="#future-steps" id="toc-future-steps" class="nav-link" data-scroll-target="#future-steps">Future Steps</a></li>
+  <li><a href="#further-considerations" id="toc-further-considerations" class="nav-link" data-scroll-target="#further-considerations">Further Considerations</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -128,32 +151,32 @@ window.Quarto = {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>The field of public health and statistics are fundamentally intertwined. This is especially so when looking at Social Determinants of Health (SDOH) which have problems that require more complex analytical models to analyze and inform. Data science being a cross disciplinary skill of statistics and computer science is perfect for addressing these issues.[] This project intends to leverage advanced machine learning models within the discipline of data science as well as the traditional data gathered for SDOH to gain insight into the potential causes of preventable hospitalizations within the counties of California.</p>
+<p>The fields of public health and statistics are fundamentally intertwined, particularly in the context of Social Determinants of Health (SDOH), which have problems that require more complex analytical models to analyze and inform. Data science, being a cross-disciplinary skill of statistics and computer science, is perfect for addressing these issues.<span class="citation" data-cites="pmc11001304">(<a href="#ref-pmc11001304" role="doc-biblioref">1</a>)</span> This project intends to leverage advanced machine learning models within the discipline of data science, as well as the traditional data gathered for SDOH, to gain insight into the potential causes of preventable hospitalizations within the counties of California.</p>
 <pre><code>The key steps involved were: </code></pre>
-<p>Data Collection: Gathering accurate and real SDOH data provided by government agencies such as calHHS, California Open Data Portal, and the US census. Data were then joined into one large use-able dataframe.</p>
+<p>Data Collection: Gathering accurate and real SDOH data provided by government agencies such as CalHHS, California Open Data Portal, and the US Census. We then joined the data into one large dataframe.</p>
 <p>Multiple Linear Regression: A unique model was created for every county using all available predictors.</p>
 <p>K-means Clustering: R-squared values obtained for each county from the multiple linear regression models were then used as feature vectors in K-means clustering.</p>
-<p>Principal Component Analysis: PCA was used to reduce dimensionality of the data into something that was able to be visualized.</p>
-<p>Stepwise Regression: Bidirectional stepwise selection used to select the final linear regression models, which automatically identified and included only the statistically significant predictors relevant to that county’s data.</p>
+<p>Principal Component Analysis: PCA was used to reduce the dimensionality of the K-means clustering data to a more manageable form for visualization.</p>
+<p>Stepwise Regression: Bidirectional stepwise selection was used to select the final linear regression models, which automatically identified and included only the statistically significant predictors relevant to that county’s data.</p>
 </section>
 <section id="background" class="level1">
 <h1>Background</h1>
-<p>Social determinants of health encompass a wide range of social, economic, and environmental factors that influence health outcomes across an individual’s lifespan. These include conditions related to birth, early development, living environment, education, employment, and aging, along with access to financial resources, political power, and social support systems. SDOH studies are very common in the field of public health. Often these studies are performed by leveraging publicly available data or by survey sampling. Most studies look at particular social determinants and utilize descriptive statistics and basic modeling for analysis.</p>
-<p>California healthcare spending is estimated at around $400 billion annually, with Medi-Cal being an estimated $160 billion of it. [] With the cost of healthcare rising every year, many California residents are unable to keep up. Hospitalizations in particular constitute a substantial portion of healthcare spending, with many being preventable. This project builds on to the traditional SDOH study by employing advanced machine learning techniques to investigate the associations between social determinants of health and preventable hospitalization rates at the county level within California. The analysis identifies underlying patterns both within individual counties and between different counties, offering insights into the broader structural and regional dynamics that contribute to disparities in preventable hospitalizations.</p>
-<p>Four social determinants of health were chosen for analysis across 58 counties in California: Education, Unemployment, Type of Employment, and Racial demographics. Education, Race, and Unemployment were chosen due to the extensive studies done that show that they have direct impacts on health. [] Three types of Employment were included: Manufacturing, Transportation, and Agriculture. These three types of employment had the most usable data across all counties and we deemed that they were diverse enough to have interesting results.</p>
+<p>Social determinants of health encompass a wide range of social, economic, and environmental factors that influence health outcomes across an individual’s lifespan. These include conditions related to birth, early development, living environment, education, employment, and aging, along with access to financial resources, political power, and social support systems. SDOH studies are prevalent in the field of public health. Often, these studies are performed by leveraging publicly available data or by survey sampling. Most studies look at particular social determinants and utilize descriptive statistics and basic modeling for analysis.</p>
+<p>California healthcare spending is estimated at around $400 billion annually, with Medi-Cal being an estimated $160 billion of it. <span class="citation" data-cites="lao4941">(<a href="#ref-lao4941" role="doc-biblioref">2</a>)</span> With the cost of healthcare rising every year, many California residents are unable to keep up. Hospitalizations in particular constitute a substantial portion of healthcare spending, with many being preventable. This project builds on the traditional SDOH study by employing advanced machine learning techniques to investigate the associations between social determinants of health and preventable hospitalization rates at the county level within California. The analysis identifies underlying patterns both within individual counties and between different counties, offering insights into the broader structural and regional dynamics that contribute to disparities in preventable hospitalizations.</p>
+<p>Four social determinants of health were chosen for analysis across 58 counties in California: Education, Unemployment, Type of Employment, and Racial demographics. Education, Race, and Unemployment were selected due to extensive research showing that they have direct impacts on health. <span class="citation" data-cites="annurev_sdh hahn_education lundqvist2016public">(<a href="#ref-annurev_sdh" role="doc-biblioref">3</a>–<a href="#ref-lundqvist2016public" role="doc-biblioref">5</a>)</span> Three types of Employment were included: Manufacturing, Transportation, and Agriculture. These three types of employment had the most usable data across all counties, and we deemed that they were not collinear.</p>
 </section>
 <section id="methods" class="level1">
 <h1>Methods</h1>
 <section id="data-collection" class="level2">
 <h2 class="anchored" data-anchor-id="data-collection">Data Collection</h2>
-<p>Data for this study were sourced from publicly available government repositories, including the California Health and Human Services Agency (CalHHS)[], the California Open Data Portal (CODP)[], and the United States Census Bureau. County-level public health metrics, such as rates of preventable hospitalizations and population estimates, were obtained from CalHHS. Employment-related indicators, including overall employment rates and the distribution of employment types across counties, were retrieved from the CODP. Education levels and racial and ethnic demographics were obtained from US Census data. Data from all sources were obtained for the years of 2005 to 2023, allowing for a multi-year analysis of county-level trends.</p>
+<p>Data for this study were sourced from publicly available government repositories, including the California Health and Human Services Agency (CalHHS)<span class="citation" data-cites="chhs_hospitalizations">(<a href="#ref-chhs_hospitalizations" role="doc-biblioref">6</a>)</span>, the California Open Data Portal (CODP)<span class="citation" data-cites="ces_employment">(<a href="#ref-ces_employment" role="doc-biblioref">7</a>)</span>, and the United States Census Bureau. County-level public health metrics, such as rates of preventable hospitalizations and population estimates, were obtained from CalHHS. Employment-related indicators, including overall employment rates and the distribution of employment types across counties, were retrieved from the CODP. Education levels and racial and ethnic demographics were obtained from US Census data. Data from all sources were obtained for the years 2005 to 2023, allowing for a multi-year analysis of county-level trends.</p>
 </section>
 <section id="data-ingestion" class="level2">
 <h2 class="anchored" data-anchor-id="data-ingestion">Data Ingestion</h2>
-<p>Data from CalHHS and CODP were obtained in csv format then cleaned using R. Unnecessary variables were removed and the data frames were joined together. The tidyverse package in R allowed direct inclusion of US Census data[]. The census data were loaded in and merged to create the final dataframe for analysis. It is worth mentioning that the census data has repeating values as they are aggregated every 5 years. Six California counties were dropped due to lack of data; Mono, Sierra, Modoc, Trinity, Alpine, Inyo. These counties have small populations which may have contributed to the lack of collected data for them. Values were then calculated as percentages of the population per county, per year. Preventable Hospitalizations were calculated at a rate per capita per 100,000 population as composite-specific types of hospital visits that have been predetermined to be preventable. This includes; COPD, Asthma, Diabetes, Pneumonia, and UTI’s. A diversity index for races was created using the Gini-Simpson Index Formula []. <span class="math display">\[
+<p>Data from CalHHS and CODP were obtained in CSV format, then cleaned using R. Unnecessary variables were removed, and the data frames were joined together. The tidyverse package in R allowed direct inclusion of US Census data. The census data were loaded in and merged to create the final dataframe for analysis. It is worth mentioning that the census data has repeating values because it is aggregated every 5 years. Six California counties were dropped due to a lack of data: Mono, Sierra, Modoc, Trinity, Alpine, and Inyo. These counties have small populations, which may have contributed to the lack of collected data for them. Values were then calculated as percentages of the population per county, per year. Preventable Hospitalizations were calculated at a rate per capita per 100,000 population as composite-specific types of hospital visits that have been predetermined to be preventable. This includes: COPD, Asthma, Diabetes, Pneumonia, and UTIs. A diversity index for races was created using the Gini-Simpson Index Formula <span class="citation" data-cites="nature_diversity">(<a href="#ref-nature_diversity" role="doc-biblioref">8</a>)</span>. <span class="math display">\[
 \text{Gini-Simpson Index} = 1 - \sum_{i=1}^{S} p_i^2
 \]</span></p>
-<p>Preliminary exploratory data analysis revealed a downward trend in preventable hospitalizations in every County and Region of California since 2005 (see Figure 1 and Figure 2). There was a sharp decline in 2020, however this could be due to the Covid-19 epidemic that year which caused hospitals to allocate less resources and admit less individuals for hospitalizations outside of SARS-Cov-2.[]</p>
+<p>Preliminary exploratory data analysis revealed a downward trend in preventable hospitalizations in every County and Region of California since 2005 (see Figure 1 and Figure 2). There was a sharp decline in 2020; however, this could be due to the COVID-19 epidemic that year, which caused hospitals to allocate fewer resources and admit fewer individuals for hospitalizations outside of SARS-CoV-2.<span class="citation" data-cites="pmc7769002">(<a href="#ref-pmc7769002" role="doc-biblioref">9</a>)</span></p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -173,23 +196,33 @@ window.Quarto = {
 </tbody>
 </table>
 </section>
+<section id="entity-relationship-diagram" class="level2">
+<h2 class="anchored" data-anchor-id="entity-relationship-diagram">Entity Relationship Diagram</h2>
+<p>The Entity Relationship Diagram (ERD) shows three initial datasets for preventable hospitalizations, census data, and Industry sectors, all being joined by county-year as a unique key. Results from that data were exported to a Jupyter notebook to perform cluster analysis. Results from the cluster analysis were merged back into the final dataframe using county as the key for a one-to-many relationship, since the clustering is for the entire duration and not specific to any single year. The final dataframe cannot be considered completely normalized due to the repeating values used from the census data.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figs/fig19.png" class="img-fluid figure-img" style="width:85.0%"></p>
+<figcaption>ERD</figcaption>
+</figure>
+</div>
+</section>
 <section id="ethical-considerations" class="level2">
 <h2 class="anchored" data-anchor-id="ethical-considerations">Ethical Considerations</h2>
-<p>Public health and census data often encapsulate long-standing structural inequalities, including those stemming from historical patterns of segregation, disparities in educational and occupational opportunities, and inequitable access to healthcare services across racial and socioeconomic strata. There have also been ethical concerns about the use of census data for healthcare research. While census data may be anonymized, the nature of the data involves categorizing individuals into blanket categories such as lumping all Asian ethnicities together or the “some other race” option. There is also inherent bias within the census process such as non-respondent bias.[] These inherent-bias were acknowledged and taken into consideration when performing analysis. Due to the nature of these data, all data are treated as representation of people rather than just numbers and appropriate language was used. To mitigate bias for race and ethnicity, data was used to create a diversity index per county rather than looking at the spread of individual ethnicities.</p>
+<p>Public health and census data often encapsulate long-standing structural inequalities, including those stemming from historical patterns of segregation, disparities in educational and occupational opportunities, and inequitable access to healthcare services across racial and socioeconomic strata. There have also been ethical concerns about the use of census data for healthcare research. While census data may be anonymized, the nature of the data involves categorizing individuals into blanket categories, such as lumping all Asian ethnicities together or the “some other race” option. Using a composite Diversity Index sought to remove the implications associated with targeting a specific race. There is also inherent bias within the census process, such as non-response bias.<span class="citation" data-cites="uksa_geospatial census_nonresponse">(<a href="#ref-uksa_geospatial" role="doc-biblioref">10</a>,<a href="#ref-census_nonresponse" role="doc-biblioref">11</a>)</span> These inherent biases were acknowledged and taken into consideration when performing the analysis. Due to the nature of these data, all data are treated as a representation of people rather than just numbers, and appropriate language was used. To mitigate bias for race and ethnicity, data was used to create a diversity index per county rather than examining the distribution of individual ethnicities.</p>
 </section>
 <section id="modeling" class="level2">
 <h2 class="anchored" data-anchor-id="modeling">Modeling</h2>
-<p>The goal of this project was to build a model that gave inference on what primary predictors are best used for modeling preventable hospitalization rates in each county. Primary modeling was conducted using multiple linear regression to create a unique model for every county. The first set of models used all of the predictive variables, individually modeled to predict preventable hospitalizations providing an R-squared value for each predictor in each county. Regression assumptions were tested for each county model using Shapiro-Wilks Tests, VIF, <span class="math inline">\(R^2\)</span> values, and Breusch-Pagan Tests.</p>
-<p>The set of R-squared values were then used as a feature vector for K-means clustering. Clustering at different values of k was evaluated using Within Cluster Sum of Squares (WCSS). For the purposes of inference k=5 was selected and used in further analysis as it was a good fit for interpretation. Principle Component Analysis (PCA) was implemented to reduce the dimensionality into something that could be visualized. Visualizing the results of the k-means clustering using principal components provided evidence that the clusters were accurately delineated into meaningful regions. The clusters were then visualized spatially on a county map to determine patterns.</p>
-<p>The final linear regression models were established using bidirectional stepwise regression that selected the significant predictors and only incorporated them into the final model for each county. VIF scores were then used in each county model to remove collinear predictors depending on the individual models. The results of the final models were visualized on the map to determine patterns.</p>
+<p>The goal of this project was to build a set of models to identify the primary predictors most effective for modeling preventable hospitalization rates in each county. Primary modeling was conducted using multiple linear regression to create a unique model for every county. The first set of models used all of the predictive variables, individually modeled to predict preventable hospitalizations, providing an R-squared value for each predictor in each county. Regression assumptions were tested for each county model using Shapiro-Wilks Tests, VIF, <span class="math inline">\(R^2\)</span> values, and Breusch-Pagan Tests.</p>
+<p>The set of R-squared values was then used as a feature vector for K-means clustering. Clustering at different values of k was evaluated using the Within Cluster Sum of Squares (WCSS). For the purposes of inference, k=5 was selected and used in further analysis as it was a good fit for interpretation. The algorithm was run with 300 max iterations using the K++ initialization. Principal Component Analysis (PCA) was implemented to reduce the dimensionality into something that could be visualized. Visualizing the results of the k-means clustering using principal components provided evidence that the clusters were accurately delineated into meaningful regions. The clusters were then visualized spatially on a county map to determine patterns.</p>
+<p>The final linear regression models were established using bidirectional stepwise regression that selected the significant predictors and only incorporated them into the final model for each county. VIF scores were then used in each county model to remove collinear predictors, depending on the individual models. Predictor variables with a VIF greater than 10 were removed. The results of the final models were visualized on the map to determine patterns.</p>
 </section>
 </section>
 <section id="results" class="level1">
 <h1>Results</h1>
 <section id="linear-regression-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="linear-regression-analysis">Linear Regression Analysis</h2>
-<p>Different SDOH factors and their relationship with Preventable Hospitalizations across the different California Counties. California Countries are extremely diverse so individual linear models were ran for each county. The <span class="math inline">\(R^2\)</span> values revealed that as sole predictors Education Level had high correlation for most counties. The type of employment had lower <span class="math inline">\(R^2\)</span> values across the board with some counties having more correlation with Transportation and Manufacturing. Unemployment had low <span class="math inline">\(R^2\)</span> values for most counties suggesting there is little relationship. Diversity had higher <span class="math inline">\(R^2\)</span> values across the board, suggesting that as a single predictor it had broader relevance.</p>
-<p>The following figures show the distribution of <span class="math inline">\(R^2\)</span> values across counties for univariate models.</p>
+<p>Different SDOH factors and their relationship with Preventable Hospitalizations were looked at across the different California Counties. California counties are incredibly diverse, so individual linear models were run for each county. Due to the high number of counties, the typical scatter plots and trend lines were not visualized. The <span class="math inline">\(R^2\)</span> values revealed that, as sole predictors, Education Level had a high correlation for most counties. Due to the high collinearity between high school graduation and college graduation, it was necessary to remove one of the variables entirely. High school graduation was selected because it better predicts preventable hospitalizations. Figure 3 shows high school graduation exhibiting a large number of counties with high <span class="math inline">\(R^2\)</span> values, making it the best single predictor for preventable hospitalizations. The type of employment had lower <span class="math inline">\(R^2\)</span> values across the board, with some counties having more correlation with Transportation and Manufacturing. Unemployment had low <span class="math inline">\(R^2\)</span> values for most counties; however, there is still a subset of counties that might rely on it as an accurate predictor in final modelling. Diversity Index had high <span class="math inline">\(R^2\)</span> values for a specific set of counties, suggesting that as a single predictor, it has relevance in final modelling.</p>
+<p>The following figures show the distribution of <span class="math inline">\(R^2\)</span> values across counties for univariate models. So, each frequency is the number of counties with <span class="math inline">\(R^2\)</span> values.</p>
 <div class="columns">
 <div class="column" style="width:33%;">
 <p><img src="figs/fig3.png" id="fig-fig3" class="img-fluid" style="width:100.0%" alt="High School Graduation"><br>
@@ -217,7 +250,7 @@ window.Quarto = {
 </section>
 <section id="k-means-clustering-pca" class="level2">
 <h2 class="anchored" data-anchor-id="k-means-clustering-pca">K-Means Clustering &amp; PCA</h2>
-<p>K-means clustering with k=5 revealed distinct patterns in model performance across county groupings. Clusters 0 and 2 were characterized by generally poor model fit, as shown by low adjusted <span class="math inline">\(R^2\)</span> values across most counties. Clusters 1, 3, and 4 however, showed stronger model performance, with a greater proportion of counties having higher <span class="math inline">\(R^2\)</span> values. Cluster 1 was primarily driven by Unemployment, High School Graduation, and the Diversity Index as key predictive variables. Cluster 3 produced moderately strong models, with Transportation, High School Graduation, and the Diversity Index emerging as the most influential predictors. Cluster 4 achieved the best model performance, with the Diversity Index, Agricultural employment, and Manufacturing employment contributing the most towards the predictive strength of the models.</p>
+<p>K-means clustering with k=5 revealed distinct patterns in model performance across county groupings. Clusters 0 and 2 were characterized by generally poor model fit, as shown by low adjusted <span class="math inline">\(R^2\)</span> values across most counties. Clusters 1, 3, and 4, however, showed stronger model performance, with a greater proportion of counties having higher <span class="math inline">\(R^2\)</span> values. Cluster 1 was primarily driven by Unemployment and High School Graduation as key predictive variables. Cluster 3 produced moderately strong models, with High School Graduation, transportation, manufacturing, and the Diversity Index emerging as the most influential predictors. Cluster 4 achieved good model performance, with the Diversity Index contributing the most towards the predictive strength of the models. The inferential findings from the cluster analysis can be visually compared to the subsequent results of multiple linear regression when the counties are plotted on a map.</p>
 <div class="columns">
 <div class="column" style="width:33%;">
 <p><img src="figs/fig9.png" id="fig-fig9" class="img-fluid" style="width:100.0%" alt="Unemployment"><br>
@@ -249,7 +282,7 @@ window.Quarto = {
 <figcaption>K-Means Clustering By Region</figcaption>
 </figure>
 </div>
-<p>PCA shows that there is reasonably distinct separation between clusters which supports the validity of our K-Means model. <span class="math inline">\(R^2\)</span> vectors carry enough structure to form meaningful clusters.</p>
+<p>PCA shows that there is reasonably distinct separation between clusters, which supports the validity of our K-Means model. <span class="math inline">\(R^2\)</span> vectors carry enough structure to form meaningful clusters. There is a strong separation between clusters deemed to be good or bad groups of county models. Cluster 0 and cluster 2 can be seen in shades of red to indicate their similarity and close proximity, while the remaining clusters that produce good county models have a closer grouping.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figs/fig16.png" class="img-fluid figure-img" style="width:85.0%"></p>
@@ -261,7 +294,7 @@ window.Quarto = {
 </section>
 <section id="stepwise-regression" class="level1">
 <h1>Stepwise Regression</h1>
-<p>Results from bilateral stepwise regression supports the results from our K-Means clustering.</p>
+<p>Results from bilateral stepwise regression show model construction for each individual county. Figures 17 and 18 represent the final model for each particular county in terms of the final adjusted <span class="math inline">\(R^2\)</span> and the number of significant predictors in each model. The results shown in Figure 17 indicate a trend towards better model predictability in higher population coastal regions. In comparison, the agricultural regions of the Central Valley and the Sacramento Valley exhibit lower adjusted <span class="math inline">\(R^2\)</span> values. Figure 18 shows the number of predictors selected in each county model. There is evidence for a trend towards the better-performing models in the high population coastal regions to also incorporate more predictors into the final model. However, there are no models that incorporate all six predictor variables. Two of the county models used five predictors, with most of the concentration in. Merced County was the only county to have no significant predictors and therefore has no model. This is shown with an Adjusted <span class="math inline">\(R^2\)</span> value of zero and zero predictors.</p>
 <div>
 
 </div>
@@ -280,12 +313,52 @@ window.Quarto = {
 <h1>Conclusions</h1>
 <p>The clustering analysis reveals a clear separation between poorly and strongly performing regression models based on their adjusted R-squared values. Models in clusters 0 and 2 generally exhibit low predictive performance, while those in clusters 1 and 4 demonstrate higher accuracy. Cluster 1 models consistently rely on Unemployment rates and High School Graduation rates as primary predictors, suggesting that these variables play a central role in explaining variation in preventable hospitalization rates. Cluster 4 models also perform well but rely more heavily on predictors such as the Diversity Index, employment in Agriculture, and employment in Manufacturing. Cluster 3 includes models with moderate predictive power, most often associated with Transportation-related employment.</p>
 <p>Analysis of the clustering results highlights the importance of population density on model viability. Counties with larger populations, particularly those located along the California coastline, are more frequently found in Cluster 1 and tend to benefit from models that rely on educational level and employment indicators. On the other hand, counties in the Central Valley and Northern California, which are more rural and agriculturally oriented, tend to have lower population densities and are more often associated with weaker models. These findings suggest that while several social determinants influence preventable hospitalizations, High School Graduation and Unemployment are the most consistent and powerful predictors across the state. Employment in the agricultural sector also appears to be a significant factor, particularly in less densely populated regions.</p>
+<p>Unemployment and Education often have a strong correlation as SDOH; however, our analysis indicates that education plays a larger role in predicting preventable hospitalizations. We can speculate that increasing awareness in young adults through health classes or public outreach programs could be a valuable area of focus. The results of the inferences established from the cluster analysis are visually similar to the results from multiple regression at the county level, indicating that certain groups of counties share a set of influential predictors.</p>
 </section>
-<section id="future-steps" class="level1">
-<h1>Future Steps</h1>
+<section id="further-considerations" class="level1">
+<h1>Further Considerations</h1>
+<p>The preventable Hospitalizations data can be updated in the future to incorporate current data. Several limitations in the data we obtained limited the final predictor variables that were used, including missing values and unmet regression assumptions. The original intent was to focus on rent prices by county as another method of correlating preventable hospitalizations with socioeconomic factors. Several sectors of the industry were removed from the final modeling due to similar issues with collinearity and heteroskedasticity. The methodology of inserting a set of R-squared values as a feature vector in k-means clustering is questionable because it is a constrained metric. The census data is collected every five years, which leads us to interpolate missing values through repetition. This led to worse outcomes in our modelling. The analysis could be improved by the acquisition of more robust and high-quality data sets. Many of the inferences made regarding the structure and meaning of the clustering groups are subjective and open to further interpretation.</p>
+</section>
+<section id="references" class="level1 unnumbered">
+
+
 </section>
 
-</main>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-pmc11001304" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Chupradit S, Wamalwa DC, et al. Population pharmacokinetics of pediatric lopinavir/ritonavir oral pellets. The Lancet Digital Health [Internet]. 2024; Available from: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11001304/">https://pmc.ncbi.nlm.nih.gov/articles/PMC11001304/</a></div>
+</div>
+<div id="ref-lao4941" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Legislative Analyst’s Office. The 2025–26 budget: Medi-cal fiscal outlook [Internet]. 2024. Available from: <a href="https://lao.ca.gov/Publications/Report/4941">https://lao.ca.gov/Publications/Report/4941</a></div>
+</div>
+<div id="ref-annurev_sdh" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Braveman P, Gottlieb L. The social determinants of health: It’s time to consider the causes of the causes. Annual Review of Public Health [Internet]. 2014;35:19–31. Available from: <a href="https://www.annualreviews.org/content/journals/10.1146/annurev-publhealth-032315-021439">https://www.annualreviews.org/content/journals/10.1146/annurev-publhealth-032315-021439</a></div>
+</div>
+<div id="ref-hahn_education" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Hahn RA, Truman BI. Education improves public health and promotes health equity. International Journal of Health Services [Internet]. 2015;45(4):657–78. Available from: <a href="https://journals.sagepub.com/doi/abs/10.1177/0020731415585986">https://journals.sagepub.com/doi/abs/10.1177/0020731415585986</a></div>
+</div>
+<div id="ref-lundqvist2016public" class="csl-entry" role="listitem">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Lundqvist Å, Mårtensson L, Stenius K. Public health is the responsibility of the entire society: A qualitative study of how members of a swedish public health committee understand public health. Scandinavian Journal of Public Health [Internet]. 2016;44(6):595–602. Available from: <a href="https://journals.sagepub.com/doi/abs/10.1177/1403494815623654">https://journals.sagepub.com/doi/abs/10.1177/1403494815623654</a></div>
+</div>
+<div id="ref-chhs_hospitalizations" class="csl-entry" role="listitem">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">California Health and Human Services Agency. Rates of preventable hospitalizations by county [Internet]. 2023. Available from: <a href="https://data.chhs.ca.gov/dataset/rates-of-preventable-hospitalizations-for-selected-medical-conditions-by-county/resource/7c7aed93-3643-43b8-92fc-324bf8fc13f2">https://data.chhs.ca.gov/dataset/rates-of-preventable-hospitalizations-for-selected-medical-conditions-by-county/resource/7c7aed93-3643-43b8-92fc-324bf8fc13f2</a></div>
+</div>
+<div id="ref-ces_employment" class="csl-entry" role="listitem">
+<div class="csl-left-margin">7. </div><div class="csl-right-inline">California Open Data Portal. Current employment statistics (CES) [Internet]. 2023. Available from: <a href="https://data.ca.gov/dataset/current-employment-statistics-ces-2/resource/5f0d9f72-2ae4-49b4-8">https://data.ca.gov/dataset/current-employment-statistics-ces-2/resource/5f0d9f72-2ae4-49b4-8</a></div>
+</div>
+<div id="ref-nature_diversity" class="csl-entry" role="listitem">
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">Simpson EH. Measurement of diversity. Nature [Internet]. 1949;163:688. Available from: <a href="https://www.nature.com/articles/163688a0">https://www.nature.com/articles/163688a0</a></div>
+</div>
+<div id="ref-pmc7769002" class="csl-entry" role="listitem">
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">Denny JC, Rutter JL, Goldstein DB, et al. The <span>“all of us”</span> research program. The New England Journal of Medicine [Internet]. 2021; Available from: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7769002/">https://pmc.ncbi.nlm.nih.gov/articles/PMC7769002/</a></div>
+</div>
+<div id="ref-uksa_geospatial" class="csl-entry" role="listitem">
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">UK Statistics Authority. Ethical considerations in the use of geospatial data for research and statistics [Internet]. 2021. Available from: <a href="https://uksa.statisticsauthority.gov.uk/publication/ethical-considerations-in-the-use-of-geospatial-data-for-research-and-statistics/">https://uksa.statisticsauthority.gov.uk/publication/ethical-considerations-in-the-use-of-geospatial-data-for-research-and-statistics/</a></div>
+</div>
+<div id="ref-census_nonresponse" class="csl-entry" role="listitem">
+<div class="csl-left-margin">11. </div><div class="csl-right-inline">U.S. Census Bureau. Nonresponse in the american community survey during COVID-19 [Internet]. 2021. Available from: <a href="https://www.census.gov/newsroom/blogs/random-samplings/2021/11/nonresponse-acs-covid-administrative-data.html">https://www.census.gov/newsroom/blogs/random-samplings/2021/11/nonresponse-acs-covid-administrative-data.html</a></div>
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
