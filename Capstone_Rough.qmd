@@ -37,7 +37,7 @@ Four social determinants of health were chosen for analysis across 58 counties i
 
 ## Data Collection
 
-Data for this study were sourced from publicly available government repositories, including the California Health and Human Services Agency (CalHHS)[@chhs_hospitalizations], the California Open Data Portal (CODP)[@ces_employment], and the United States Census Bureau. County-level public health metrics, such as rates of preventable hospitalizations and population estimates, were obtained from CalHHS. Employment-related indicators, including overall employment rates and the distribution of employment types across counties, were retrieved from the CODP. Education levels and racial and ethnic demographics were obtained from US Census data. Data from all sources were obtained for the years 2005 to 2023, allowing for a multi-year analysis of county-level trends. 
+Data for this study were sourced from publicly available government repositories, including the California Health and Human Services Agency (CalHHS)[@chhs_hospitalizations], the California Open Data Portal (CODP)[@ces_employment], and the United States Census Bureau. County-level public health metrics, such as rates of preventable hospitalizations and population estimates, were obtained from CalHHS. Employment-related indicators, including overall employment rates and the distribution of employment types across counties, were retrieved from the CODP. Education levels and racial and ethnic demographics were obtained from US Census data. Data from all sources were obtained for the years 2005 to 2023, allowing for a multi-year analysis of county-level trends.
 
 ## Data Ingestion
 
