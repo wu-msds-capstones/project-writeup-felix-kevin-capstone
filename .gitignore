@@ -1,3 +1,15 @@
-/.quarto/
-/_output/
+# Quarto temporary files
+_quarto/
+_publish/
+_manuscript/
+_output/
+
+# RStudio files
 .Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# Output files avoid using all the old html files and local rendes
+*.pdf
+docs/
