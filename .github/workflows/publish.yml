@@ -1,4 +1,4 @@
-name: Render and Deploy Quarto Project (with Diagnostics)
+name: Render and Deploy Quarto Project
 
 on:
   push:
@@ -31,12 +31,6 @@ jobs:
 
       - name: Render Project
         run: quarto render
-
-      - name: List Files After Render # <-- NEW DIAGNOSTIC STEP
-        run: ls -R
-
-      - name: Rename Rendered File to index.html
-        run: mv ./_manuscript/Capstone_Rough.html ./_manuscript/index.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
