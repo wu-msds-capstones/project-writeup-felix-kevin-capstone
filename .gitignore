@@ -13,3 +13,4 @@ _output/
 # Output files avoid using all the old html files and local rendes
 *.pdf
 docs/
+
