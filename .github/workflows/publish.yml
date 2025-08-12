@@ -23,8 +23,8 @@ jobs:
 
       - name: Install R Dependencies
         run: |
-          install.packages("remotes")
-          remotes::install_deps(dependencies = TRUE)
+          install.packages(c('rmarkdown', 'knitr', 'tidyverse'))
+        shell: Rscript {0}
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
