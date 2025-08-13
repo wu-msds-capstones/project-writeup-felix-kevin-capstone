@@ -6,6 +6,13 @@ author:
   - Kevin Kiser
 bibliography: references.bib
 csl: vancouver.csl
+
+
+format:
+  html:
+    theme: cerulean
+    toc: true
+    toc-location: left
 ---
 
 # Introduction
