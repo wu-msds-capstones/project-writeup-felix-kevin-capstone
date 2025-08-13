@@ -7,7 +7,6 @@ author:
 bibliography: references.bib
 csl: vancouver.csl
 
-
 format:
   html:
     theme: cerulean
