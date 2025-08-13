@@ -159,6 +159,7 @@ K-means clustering with k=5 revealed distinct patterns in model performance acro
 
 :::
 
+
 Each county was assigned one of five clusters based on the predictive strength of individual variables. The resulting map highlights regional similarities in the underlying social determinants of preventable hospitalizations. 
 
 ![K-Means Clustering By Region](figs/fig15.png){width=85%}
